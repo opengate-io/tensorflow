@@ -20,7 +20,6 @@ c.NotebookApp.port = int(os.getenv('PORT', 8888))
 c.NotebookApp.open_browser = False
 c.NotebookApp.base_url='~/'
 c.NotebookApp.default_url='~/tree/'
-c.ContentsManager.root_dir='/test'
 c.MultiKernelManager.default_kernel_name = 'python2'
 # sets a password if PASSWORD is set in the environment
 if 'PASSWORD' in os.environ:
