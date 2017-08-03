@@ -15,7 +15,7 @@ COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
 # Install latest stable Kernel Gateway
-RUN pip install requests json pandas pickle
+RUN apt-get install python-requests python-json python-pandas python-pickle
 
 # TensorBoard
 EXPOSE 6006
