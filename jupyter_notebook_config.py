@@ -16,6 +16,7 @@ import os
 from IPython.lib import passwd
 
 c.NotebookApp.ip = '*'
+c.NotebookApp.allow_origin = '*'
 c.NotebookApp.port = int(os.getenv('PORT', 8888))
 c.NotebookApp.open_browser = False
 c.NotebookApp.base_url='/apisrv/' + os.environ['APP_SUB_DOMAIN'] + '~' + os.environ['APP_OWNER_ID'] + '/'
