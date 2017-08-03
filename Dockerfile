@@ -14,11 +14,8 @@ COPY notebooks /notebooks
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
-# Install additional packages used by notebook during build time
-RUN julia -e 'Pkg.add("JSON")' && julia -e 'Pkg.add("Requests")'
-
 # Install latest stable Kernel Gateway
-RUN pip install jupyter_kernel_gateway requests json pandas pickle
+RUN pip install requests json pandas pickle
 
 # TensorBoard
 EXPOSE 6006
