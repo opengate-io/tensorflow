@@ -14,9 +14,12 @@ COPY notebooks /notebooks
 COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
-# Install latest stable Kernel Gateway
-RUN apt-get install python-requests python-json python-pandas python-pickle
-
+# Install latest stable dependancies
+RUN pip --no-cache-dir install \
+        requests \
+        json \
+        pickle
+        
 # TensorBoard
 EXPOSE 6006
 # IPython
