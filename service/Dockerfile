@@ -10,4 +10,4 @@ VOLUME /notebooks
 EXPOSE 5000
 
 # Tell the kernel gateway to load the scotch notebook by default
-CMD ["python"", "/notebooks/service.py"]
+CMD ["python", "/notebooks/service.py"]
