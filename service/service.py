@@ -1,7 +1,7 @@
 #!flask/bin/python
 from flask import Flask, jsonify, abort, request, make_response, url_for
 
-app = Flask(__name__, static_url_path = "/notebooks/docs")
+app = Flask(__name__, static_url_path = "")
 
 @app.errorhandler(400)
 def not_found(error):
@@ -34,7 +34,11 @@ def make_public_task(task):
         else:
             new_task[field] = task[field]
     return new_task
-    
+
+@app.route('/')
+def index():    
+    return app.send_static_file('index.html')
+
 @app.route('/tasks', methods = ['GET'])
 def get_tasks():
     return jsonify( { 'tasks': map(make_public_task, tasks) } )
