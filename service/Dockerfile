@@ -18,7 +18,7 @@ RUN chmod +x /run_jupyter.sh
 RUN julia -e 'Pkg.add("JSON")' && julia -e 'Pkg.add("Requests")'
 
 # Install latest stable Kernel Gateway
-RUN pip install jupyter_kernel_gateway
+RUN pip install jupyter_kernel_gateway requests json pandas pickle
 
 # TensorBoard
 EXPOSE 6006
