@@ -1,30 +1,11 @@
-FROM tensorflow/tensorflow:latest
-
-MAINTAINER DUONG Dinh Cuong <cuongdd1@fsoft.com.vn>
-
-# Set up our notebook config.
-COPY jupyter_notebook_config.py /root/.jupyter/
-
-# Copy sample notebooks.
-COPY notebooks /notebooks
-
-# Jupyter has issues with being run directly:
-#   https://github.com/ipython/ipython/issues/7062
-# We just add a little wrapper script.
-COPY run_jupyter.sh /
-RUN chmod +x /run_jupyter.sh
-
-# Install additional packages used by notebook during build time
-RUN julia -e 'Pkg.add("JSON")' && julia -e 'Pkg.add("Requests")'
-
-# Install latest stable Kernel Gateway
-RUN pip install jupyter_kernel_gateway requests json pandas pickle
-
-# TensorBoard
-EXPOSE 6006
-# IPython
-EXPOSE 8888
-
-WORKDIR "/notebooks"
-
-CMD ["/run_jupyter.sh", "--allow-root"]
+# Start with an existing Jupyter image with some Python libs preinstalled
+FROM jupyter/scipy-notebook:9cb6443840b2
+# Add the kernel gateway
+RUN pip install jupyter_kernel_gateway==0.3.1
+# Make the gateway the container entrypoint, put it in HTTP mode, and
+# have it listen on all interfaces in the container.
+ENTRYPOINT ["tini", "--", "jupyter", "kernelgateway", "--KernelGatewayApp.api=notebook-http", "--KernelGatewayApp.ip=0.0.0.0"]
+# Add the scotch notebook
+COPY scotch_api_python.ipynb /srv/notebooks/
+# Tell the kernel gateway to load the scotch notebook by default
+CMD ["--KernelGatewayApp.seed_uri=/srv/notebooks/scotch_api_python.ipynb"]
