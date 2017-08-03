@@ -34,10 +34,6 @@ def make_public_task(task):
         else:
             new_task[field] = task[field]
     return new_task
-
-@app.route('/', methods = ['GET'])
-def get_tasks():
-    return jsonify( { 'status': 'running...' } )
     
 @app.route('/tasks', methods = ['GET'])
 def get_tasks():
