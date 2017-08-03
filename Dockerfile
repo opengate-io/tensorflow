@@ -15,7 +15,7 @@ COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
 # Install latest stable dependancies
-RUN pip --no-cache-dir install requests simplejson flask flask-httpauth
+RUN pip --no-cache-dir install requests simplejson flask
         
 # TensorBoard
 EXPOSE 6006
