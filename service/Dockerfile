@@ -9,7 +9,7 @@ RUN pip install jupyter_kernel_gateway==0.3.1
 ENTRYPOINT ["tini", "--", "jupyter", "kernelgateway", "--KernelGatewayApp.api=notebook-http", "--KernelGatewayApp.ip=0.0.0.0"]
 
 # Add the scotch notebook
-COPY scotch_api_python.ipynb /notebooks/service.ipynb
+COPY service_example_python.ipynb /notebooks/service.ipynb
 
 VOLUME /notebooks
 
