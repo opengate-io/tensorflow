@@ -3,7 +3,7 @@ FROM cuongdd1/tensorflow
 
 # Add the scotch notebook
 COPY service.py /notebooks/
-COPY static /notebooks/
+COPY static /notebooks/static/
 
 VOLUME /notebooks
 

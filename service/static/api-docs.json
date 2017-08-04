@@ -19,18 +19,10 @@
 	],
 	"paths": {
 		"/tasks": {
-			"post": {
+			"get": {
 				"tags": ["Example Tag"],
 				"description": "Analyze and text out from an image using Tensorflow",
-				"parameters": [
-					{
-						"name": "body",
-						"in": "body",
-						"required": true,
-						"schema": {
-							"$ref": "#/definitions/message"
-						}
-					},
+				"parameters": [					
 					{
 						"name": "secret_key",
 						"in": "query",
