@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:latest
 
-MAINTAINER DUONG Dinh Cuong <cuongdd1@fsoft.com.vn>
+MAINTAINER CuongQuay <cuong3ihut@gmail.com>
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
@@ -15,7 +15,7 @@ COPY run_jupyter.sh /
 RUN chmod +x /run_jupyter.sh
 
 # Install latest stable dependancies
-RUN pip --no-cache-dir install requests simplejson flask boto3 uuid
+RUN pip --no-cache-dir install requests simplejson boto3 uuid
         
 # TensorBoard
 EXPOSE 6006

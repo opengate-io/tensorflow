@@ -21,8 +21,7 @@ c.NotebookApp.port = int(os.getenv('PORT', 8888))
 c.NotebookApp.open_browser = False
 c.NotebookApp.allow_credentials = False
 c.NotebookApp.disable_check_xsrf = True
-c.NotebookApp.base_url='/apisrv/' + os.environ['APP_SUB_DOMAIN'] + '~' + os.environ['APP_OWNER_ID'] + '/'
-c.MultiKernelManager.default_kernel_name = 'python2'
+c.MultiKernelManager.default_kernel_name = 'python3'
 # sets a password if PASSWORD is set in the environment
 if 'PASSWORD' in os.environ:
   password = os.environ['PASSWORD']
